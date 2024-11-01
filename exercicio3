@@ -1,0 +1,76 @@
+// See https://aka.ms/new-console-template for more information
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+
+namespace aula_poo
+{
+    internal class Program {
+
+        static void Main(string[] args) {
+
+            ////instanciando meu objeto
+            //ClassAluno estudante1 = new ClassAluno("jose", 34);
+            ////pilar do encapsulamento: meus atributos devem ser privados
+
+            //// ele vê uma cópia do valor de nome
+            ////Console.WriteLine(estudante1.getNome);
+            //Console.WriteLine(estudante1.Nome);
+
+            ////fazendo alteração de atributo por metodo set
+            //estudante1.Nome("Maria");
+
+            Funcionario funcionario1 = new Funcionario("João", 5000, 500);
+            funcionario1.mostrarDados();
+            funcionario1.aumentarSalario();
+
+            Alunos aluno1 = new Alunos(10, 1);
+            aluno1.calculoMedia();
+            aluno1.calculoFinal();
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace aula_poo
+{
+    internal class Alunos
+    {
+        private int matricula;
+        private string nome;
+        private double notaprova;
+        private double notatrabalho;
+
+        public Alunos(double notaprova, double notatrabalho)
+        {
+            this.notaprova = notaprova;
+            this.notatrabalho = notatrabalho;
+        }
+
+        public double calculoMedia() 
+        {
+            return (notaprova * 2.5 + notatrabalho * 2) / 2;
+        }
+
+        //supondo de 1 a 10 -> media max -> 22,5
+        public double calculoFinal() 
+        {
+            double media = calculoMedia();
+            double notaFinal = media - 22.5;
+
+            return notaFinal;
+        }
+
+    }
+}
