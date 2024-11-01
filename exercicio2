@@ -1,0 +1,93 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace aula_poo
+{
+    internal class Funcionario
+    {
+        private string nome;
+        private double salariobruto;
+        private double imposto;
+        private double salarioLiquido;
+
+        //construtor(ainda não entendo pra que)
+        public Funcionario(string nome, double salariobruto, double imposto)
+        {
+            this.nome = nome;
+            this.salariobruto = salariobruto;
+            this.imposto = imposto;
+        }
+
+        //deve ter 2 metodos:
+        //mostrar dados(nome e salario liquido)
+        //*salario liquido - impostos*
+        //Aumentar o salário do funcionário com base em uma porcentagem dada
+
+        public void mostrarDados() 
+        {
+            salarioLiquido = salariobruto - imposto;
+            Console.WriteLine(nome, salarioLiquido);
+        }
+
+        public void aumentarSalario()
+        {
+            switch (salarioLiquido)
+            {
+                case var s when s <= 2000:
+                    salarioLiquido = salarioLiquido+(salarioLiquido*0.1);
+                    Console.WriteLine(salarioLiquido);
+                    break;
+
+                case var s when s <= 3000:
+                    salarioLiquido = salarioLiquido + (salarioLiquido * 0.15);
+                    Console.WriteLine(salarioLiquido);
+                    break;
+
+                default:
+                    salarioLiquido = salarioLiquido + (salarioLiquido * 0.2);
+                    Console.WriteLine(salarioLiquido);
+                    break;
+            }
+        }
+    }
+}
+
+
+// See https://aka.ms/new-console-template for more information
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+
+namespace aula_poo
+{
+    internal class Program {
+
+        static void Main(string[] args) {
+
+            ////instanciando meu objeto
+            //ClassAluno estudante1 = new ClassAluno("jose", 34);
+            ////pilar do encapsulamento: meus atributos devem ser privados
+
+            //// ele vê uma cópia do valor de nome
+            ////Console.WriteLine(estudante1.getNome);
+            //Console.WriteLine(estudante1.Nome);
+
+            ////fazendo alteração de atributo por metodo set
+            //estudante1.Nome("Maria");
+
+            Funcionario funcionario1 = new Funcionario("João", 5000, 500);
+            funcionario1.mostrarDados();
+            funcionario1.aumentarSalario();
+        }
+    }
+}
